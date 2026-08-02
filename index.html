@@ -144,6 +144,12 @@ header{position:sticky;top:0;z-index:20;background:rgba(244,239,231,.86);backdro
 .wish.on{color:#e8b64a}
 .resto .spot{color:var(--sage-d)}
 .resto .spot-p{color:var(--sage-d);background:#e7f0e0;border-color:var(--sage)}
+.resto-toggle{cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:0}
+.resto .rcount{background:#e7f0e0;color:var(--sage-d);border:1px solid var(--sage);border-radius:20px;padding:0 7px;font-size:10px;line-height:16px;font-weight:800}
+.resto .rchev{transition:transform .2s;font-size:11px;color:var(--muted)}
+.resto.folded .resto-list{display:none}
+.resto:not(.folded) .rchev{transform:rotate(180deg)}
+.resto .resto-list{flex-basis:100%;display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 
 .block{margin:9px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
 .block-h{display:flex;align-items:center;gap:11px;padding:11px 12px}
@@ -1115,15 +1121,15 @@ function fichesHtml(st,b,names){
 function restoHtml(st,b){
   if(!b.resto||!b.resto.length)return '';
   const ctx=', '+b.c+', '+st.nm;
-  return `<div class="spots resto"><span class="spots-l">🍜 Où manger — incontournables</span>`+
-    b.resto.map(r=>{
+  const rows=b.resto.map(r=>{
       const nm=r.n;
       const star=`<span class="wish ${isWished(nm)?'on':''}" onclick="event.stopPropagation();toggleWishItin('${esc(nm)}',this)">${isWished(nm)?'★':'☆'}</span>`;
       const link=`<a class="spot" target="_blank" rel="noopener" onclick="event.stopPropagation()" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(nm+ctx)}">${nm}</a>`;
       const p=r.p?`<span class="spot-p">${r.p}</span>`:'';
       const t=r.t?`<div class="spot-t">🍽️ ${r.t}</div>`:'';
       return `<div class="spot-row">${star}${link}${p}${t}</div>`;
-    }).join('')+`</div>`;
+    }).join('');
+  return `<div class="spots resto folded"><span class="spots-l resto-toggle" onclick="event.stopPropagation();this.parentNode.classList.toggle('folded')">🍜 Où manger <span class="rcount">${b.resto.length}</span> <span class="rchev">▾</span></span><div class="resto-list">${rows}</div></div>`;
 }
 function blockHtml(st,b){
   const bid=st.id+'-'+b.c;
