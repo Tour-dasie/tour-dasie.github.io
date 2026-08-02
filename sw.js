@@ -1,7 +1,7 @@
 /* Service worker — Tour d'Asie
    1) Notifications push (appli fermée)
    2) Mode hors-ligne : met en cache l'appli + ses ressources pour consulter sans réseau */
-const CACHE = 'tourdasie-v4';
+const CACHE = 'tourdasie-v5';
 
 /* Ressources internes (même domaine) */
 const CORE = [
@@ -14,7 +14,8 @@ const CDN = [
   'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js',
   'https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js',
   'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js',
-  'https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js'
+  'https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js',
+  'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap'
 ];
 
 self.addEventListener('install', e => {
