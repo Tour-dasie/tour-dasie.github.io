@@ -156,6 +156,18 @@ header{position:sticky;top:0;z-index:20;background:rgba(244,239,231,.86);backdro
 .so-item{flex-basis:100%;font-size:12.8px;color:var(--ink2);line-height:1.46;margin:2px 0}
 .so-cap{flex-basis:100%;font-size:12.8px;color:var(--ink);background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:8px 11px;margin:4px 0;line-height:1.46}
 .so-tag{flex-basis:100%;font-size:12px;color:var(--blue-d);font-weight:600;margin-top:4px;word-break:break-word}
+.prat{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:14px;margin:11px 0 3px;overflow:hidden;box-shadow:var(--sh)}
+.prat-h{cursor:pointer;padding:11px 14px;font-weight:800;font-size:13.5px;color:var(--ink);display:flex;align-items:center;gap:7px}
+.prat-off{color:var(--muted);font-weight:600;font-size:11.5px}
+.prat-h .rchev{margin-left:auto;transition:transform .2s;font-size:11px;color:var(--muted)}
+.prat:not(.folded) .prat-h .rchev{transform:rotate(180deg)}
+.prat.folded .prat-body{display:none}
+.prat-body{padding:0 14px 12px}
+.prat-row{padding:9px 0;border-top:1px solid var(--line);font-size:12.8px;color:var(--ink2);line-height:1.5}
+.prat-row>b{color:var(--ink);font-size:12px;text-transform:uppercase;letter-spacing:.02em;display:block;margin-bottom:3px}
+.phr{padding:3px 0;font-size:12.6px;color:var(--ink2)}
+.phr-loc{font-weight:700;color:var(--ink)}
+.phr-ph{color:var(--muted);font-style:italic;font-size:11.5px}
 
 .block{margin:9px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
 .block-h{display:flex;align-items:center;gap:11px;padding:11px 12px}
@@ -1066,6 +1078,31 @@ function remWhen(r,t){
 }
 
 /* ============ ITINÉRAIRE ============ */
+const PRATIQUE={
+"cn":{urg:"Police 110 · Ambulance 120 · Pompiers 119",amb:"Ambassade de France à Pékin (consulats à Shanghai, Canton, Chengdu, Wuhan, Shenyang). Urgence consulaire 24/7 (Centre de crise, Paris) : +33 1 53 59 11 00.",prise:"220 V · prises types A, C et I — adaptateur universel conseillé.",money:"Yuan (¥, CNY). Paiement mobile ROI (Alipay/WeChat, lie ta carte Visa avant le départ) ; garde du cash. Pourboire : pas d'usage, parfois refusé.",eau:"Eau du robinet NON potable — bouteille ou eau bouillie.",arn:"📵 Insta, TikTok, WhatsApp, Google et Gmail sont BLOQUÉS en Chine : installe un VPN AVANT d'arriver (indispensable pour poster !). Méfie-toi des faux « salons de thé » et « étudiantes en art » (Pékin) et des taxis sans compteur.",phr:[["Bonjour","你好 Nǐ hǎo","ni-hao"],["Merci","谢谢 Xièxie","sié-sié"],["Oui / Non","是 Shì / 不是 Bù shì","che / bou-che"],["Combien ?","多少钱? Duōshǎo qián","douo-chao tchienn"],["L'addition","买单 Mǎidān","maï-dann"],["Au secours !","救命! Jiùmìng","tsiou-ming"]]},
+"jp":{urg:"Police 110 · Ambulance & Pompiers 119",amb:"Ambassade de France à Tokyo (consulat à Kyoto). Urgence consulaire 24/7 (Centre de crise, Paris) : +33 1 53 59 11 00.",prise:"⚠️ 100 V seulement (le plus bas au monde) · prises types A et B — vérifie que tes appareils supportent 100 V.",money:"Yen (¥, JPY). Encore beaucoup de CASH (retraits aux 7-Eleven). Pourboire : NON, cela peut être mal vu.",eau:"Eau du robinet POTABLE et sûre partout.",arn:"Pays très sûr, arnaques rares. Seule vigilance : les rabatteurs de bars/clubs à Kabukicho (Tokyo) et Susukino (Sapporo) — ne les suis pas.",phr:[["Bonjour","こんにちは Konnichiwa","kon-nitchiwa"],["Merci","ありがとう Arigatō","arigato"],["Oui / Non","はい Hai / いいえ Iie","haï / iié"],["Combien ?","いくらですか Ikura desu ka","ikoura dess ka"],["L'addition","お会計お願いします Okaikei onegaishimasu","o-kaïké onégaï-shimass"],["Au secours !","助けて! Tasukete","tass-kété"]]},
+"th":{urg:"Police touristique 1155 · Police 191 · Ambulance 1669 · Pompiers 199",amb:"Ambassade de France à Bangkok. Urgence consulaire 24/7 (Centre de crise, Paris) : +33 1 53 59 11 00.",prise:"220 V · prises types A, B et C — adaptateur conseillé.",money:"Baht (฿, THB). Pourboire : non obligatoire, on arrondit (20-50 ฿ apprécié). Taxis : exige le compteur ou prends Grab/Bolt.",eau:"Eau du robinet NON potable — bouteille.",arn:"« Le Grand Palais est fermé aujourd'hui » = arnaque de tuk-tuk vers des boutiques : ignore-la. Photographie l'état d'un scooter/jet-ski loué avant, contre les fausses cautions.",phr:[["Bonjour","สวัสดี Sawasdee (kha/khrap)","sawat-di"],["Merci","ขอบคุณ Khop khun","kop-koun"],["Oui / Non","ใช่ Chai / ไม่ Mai","tchaï / maï"],["Combien ?","เท่าไหร่ Thao rai","tao-raï"],["L'addition","เช็คบิล Check bin","tchèk-bin"],["Au secours !","ช่วยด้วย Chuay duay","tchouaï-douaï"]]},
+"kh":{urg:"Police 117 · Ambulance 119 · Pompiers 118 (peu fiables — l'hôpital privé ou l'hôtel est souvent plus rapide)",amb:"Ambassade de France à Phnom Penh. Urgence consulaire 24/7 (Centre de crise, Paris) : +33 1 53 59 11 00.",prise:"230 V · prises types A, C et G — adaptateur conseillé.",money:"Dollar US ($) accepté PARTOUT ; le riel (KHR) sert pour la monnaie sous 1 $. Prends des petites coupures propres (billets abîmés refusés). Pourboire apprécié (1-2 $).",eau:"Eau du robinet NON potable — bouteille.",arn:"Vérifie la monnaie rendue ($/riel). Ne visite PAS les « orphelinats » (à éviter). À Phnom Penh, vols de sac/téléphone à moto : porte ton sac côté trottoir.",phr:[["Bonjour","សួស្តី Suosdey","suor-sdeï"],["Merci","អរគុណ Arkoun","or-koun"],["Oui / Non","បាទ/ចាស Bat/Chas / ទេ Te","baat-tchah / té"],["Combien ?","ថ្លៃប៉ុន្មាន Thlai ponman","tlaï pon-mann"],["L'addition","គិតលុយ Kit luy","kit-louï"],["Au secours !","ជួយផង Chuoy phong","tchouy-pong"]]},
+"vn":{urg:"Police 113 · Ambulance 115 · Pompiers 114",amb:"Ambassade de France à Hanoi (consulat à Hô Chi Minh-Ville). Urgence consulaire 24/7 (Centre de crise, Paris) : +33 1 53 59 11 00.",prise:"220 V · prises types A, C et F — adaptateur conseillé.",money:"Dong (₫, VND). Cash roi ; attention aux zéros (500 000 ≈ 18 €). Taxis : Grab ou Xanh SM. Pourboire non habituel mais apprécié.",eau:"Eau du robinet NON potable — bouteille.",arn:"Taxis au compteur trafiqué → Grab/Xanh SM. Vérifie la monnaie rendue. À Hanoi/Saïgon, la « photo avec la palanche » de rue devient vite payante.",phr:[["Bonjour","Xin chào","sin-tchao"],["Merci","Cảm ơn","cam-eun"],["Oui / Non","Vâng / Không","vung / kong"],["Combien ?","Bao nhiêu","bao-nyiew"],["L'addition","Tính tiền","ting-tienn"],["Au secours !","Cứu tôi","kou-toï"]]},
+"la":{urg:"Police 191 · Ambulance 195 · Pompiers 190",amb:"Ambassade de France à Vientiane. Urgence consulaire 24/7 (Centre de crise, Paris) : +33 1 53 59 11 00.",prise:"230 V · prises types A, B, C, E et F.",money:"Kip (₭, LAK). Retraits DIFFICILES et plafonnés : prévois du liquide (USD/THB dépannent). Pourboire non habituel, apprécié.",eau:"Eau du robinet NON potable — bouteille.",arn:"Peu d'arnaques. Négocie le prix des tuk-tuks avant de monter. Prudence avec le « tubing »/rivière à Vang Vieng (alcool + courant).",phr:[["Bonjour","ສະບາຍດີ Sabaidee","sabaï-di"],["Merci","ຂອບໃຈ Khop chai","kop-tchaï"],["Oui / Non","ແມ່ນ Maen / ບໍ່ Bo","mèn / bo"],["Combien ?","ເທົ່າໃດ Thao dai","tao-daï"],["L'addition","ຄິດເງິນ Khit ngeun","kit-ngeun"],["Au secours !","ຊ່ວຍແດ່ Suay dae","souaï-dè"]]},
+"pi":{urg:"Urgences (national) : 911",amb:"Ambassade de France à Manille. Urgence consulaire 24/7 (Centre de crise, Paris) : +33 1 53 59 11 00.",prise:"220 V mais 60 Hz · prises types A, B et C (certains lieux en 110 V).",money:"Peso (₱, PHP). Pourboire ~10 % apprécié (parfois « service charge » déjà inclus). L'anglais est parlé partout.",eau:"Eau du robinet NON potable — bouteille.",arn:"Arnaque à la boisson/nourriture droguée par des inconnus trop amicaux (Manille). Surveille tes bagages aux ports/aéroports et confirme les frais de bateau à Coron.",phr:[["Bonjour","Kumusta / Magandang araw","koumousta"],["Merci","Salamat","salamat"],["Oui / Non","Oo / Hindi","o-o / hindi"],["Combien ?","Magkano","mag-kano"],["L'addition","Bill / Chit (l'anglais marche)","—"],["Au secours !","Saklolo / Tulong","sak-lolo / toulong"]]}
+};
+function pratiqueHtml(st){
+  const p=(typeof PRATIQUE!=='undefined')?PRATIQUE[st.id]:null; if(!p)return '';
+  const phr=(p.phr||[]).map(x=>`<div class="phr"><span class="phr-fr">${x[0]}</span> → <span class="phr-loc">${x[1]}</span>${(x[2]&&x[2]!=='—')?` <span class="phr-ph">(${x[2]})</span>`:''}</div>`).join('');
+  return `<div class="prat folded">
+    <div class="prat-h" onclick="this.parentNode.classList.toggle('folded')">🆘 Infos pratiques <span class="prat-off">(hors-ligne)</span><span class="rchev">▾</span></div>
+    <div class="prat-body">
+      <div class="prat-row"><b>🚨 Urgences</b><div>${p.urg}</div></div>
+      <div class="prat-row"><b>🇫🇷 Ambassade / consulat</b><div>${p.amb}</div></div>
+      <div class="prat-row"><b>🔌 Prise &amp; courant</b><div>${p.prise}</div></div>
+      <div class="prat-row"><b>💰 Argent &amp; pourboire</b><div>${p.money}</div></div>
+      <div class="prat-row"><b>🚰 Eau du robinet</b><div>${p.eau}</div></div>
+      <div class="prat-row"><b>⚠️ Bon à savoir</b><div>${p.arn}</div></div>
+      <div class="prat-row"><b>🗣️ Phrases utiles</b><div class="phrs">${phr}</div></div>
+    </div>
+  </div>`;
+}
 function renderItin(){
   const t=today();let cur=null;for(const st of STAGES){if(t>=pd(st.start)&&t<pd(st.end)){cur=st;break;}}
   let html=`<div class="sec-title">7 étapes · 14 oct 2026 → fin mai 2027 · 2 pers</div>`;
@@ -1087,6 +1124,7 @@ function renderItin(){
         <div class="sb-line"><span class="k">Visa</span><span>${st.visa}</span></div>
         ${st.note?`<div class="sb-line"><span class="k">À noter</span><span>${st.note}</span></div>`:''}
         <div class="film"><b>📸 À filmer :</b> ${st.film}</div>
+        ${pratiqueHtml(st)}
         ${st.blocks.map(b=>blockHtml(st,b)).join('')}
       </div></div>`;
   });
