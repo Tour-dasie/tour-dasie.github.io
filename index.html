@@ -13,6 +13,9 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="icon-192.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f4efe7; --bg2:#ece5d9; --card:#fffdf9; --card2:#f7f1e7;
@@ -275,13 +278,21 @@ textarea{width:100%;background:var(--card);border:1px solid var(--line2);color:v
 /* quand verrouillé : tout le carnet est masqué */
 body.locked{overflow:hidden}
 body.locked header,body.locked main,body.locked .nav,body.locked #fab{display:none!important}
+/* --- Finition « pro » : police de titres (Fraunces) + logo de marque --- */
+:root{--disp:'Fraunces',Georgia,'Times New Roman',serif}
+.htitle{font-family:var(--disp);font-weight:700;letter-spacing:0;font-size:18px}
+.phero .big,.lhero .big{font-family:var(--disp);font-weight:600;letter-spacing:-.01em}
+.banner .nm{font-family:var(--disp);font-weight:600}
+.loginbox h2{font-family:var(--disp);font-weight:600;font-size:25px;margin-top:6px}
+.brandmark{width:27px;height:27px;border-radius:8px;box-shadow:0 2px 7px rgba(120,100,70,.28);display:block}
+.lg-logo-img{width:80px;height:80px;border-radius:21px;box-shadow:var(--sh2);margin:2px auto 8px;display:block}
 </style>
 </head>
 <body class="locked">
 
 <header>
   <div class="wrap hrow">
-    <div class="htitle"><span class="globe">🌏</span> Tour d'Asie</div>
+    <div class="htitle"><img class="brandmark" src="icon-192.png" alt=""> Tour d'Asie</div>
     <div class="hbtns">
       <button class="iconbtn" id="syncbtn" onclick="openSync()" title="Synchronisation">☁️<span id="syncdot" class="syncdot off"></span></button>
       <button class="iconbtn" onclick="openData()" title="Sauvegarde">💾</button>
@@ -871,7 +882,7 @@ function doLogout(){if(confirm('Se déconnecter de ce carnet sur cet appareil ?'
 function showLogin(){
   if($('#lg-mail'))return;
   $('#modal').innerHTML=`<div class="loginwrap"><div class="loginbox">
-    <div class="lg-logo">🌏</div>
+    <img class="lg-logo-img" src="icon-192.png" alt="Tour d'Asie">
     <h2>Tour d'Asie</h2>
     <div class="lg-sub">Carnet privé — connexion requise</div>
     <label class="fl-l">E-mail</label>
