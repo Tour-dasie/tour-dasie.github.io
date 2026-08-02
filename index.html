@@ -717,6 +717,7 @@ const REMINDERS=[
  {id:"r11",date:"2027-04-10",icon:"🤿",t:"Plongée épaves Coron + Wreck Specialty",s:"Vols régionaux + forfait plongée · qq semaines avant",push:true},
  {id:"r12",date:"2026-12-16",icon:"🕯️",t:"Réserver le guide de la grotte de Chiang Dao",s:"Guide local obligatoire (lampe à pétrole)",push:false},
  {id:"r13",date:"2027-04-03",icon:"🎈",t:"Réserver la montgolfière de Vang Vieng",s:"2-3 jours avant, à l'aube",push:false},
+ {id:"r14",date:"2026-10-07",icon:"🎒",t:"Faire le sac — checklist bagage",s:"Passe en revue l'onglet 🎒 Bagage : papiers, pharmacie, adaptateur (Japon 100 V), gourde filtrante, tenue temples. Départ le 14 oct !",push:true},
 ];
 
 const CHECK=[
@@ -1369,10 +1370,59 @@ function delSettle(id){S.settlements=(S.settlements||[]).filter(x=>x.id!==id);sa
 
 /* ============ RAPPELS ============ */
 let remTab='ech';
+const PACK=[
+{cat:"📄 Papiers & argent",items:[
+ {id:"pk1",t:"Passeports (valides 6 mois après le retour)"},
+ {id:"pk2",t:"Photocopies + scans cloud (passeport, visas, assurance)"},
+ {id:"pk3",t:"Cartes bancaires Revolut + Wise"},
+ {id:"pk4",t:"Cash en dollars US",s:"Utile Cambodge / Laos"},
+ {id:"pk5",t:"Attestation d'assurance Chapka + n° d'urgence"},
+ {id:"pk6",t:"Photos d'identité (×4)",s:"Cartes SIM / démarches sur place"},
+ {id:"pk7",t:"Carnet de vaccination international"}]},
+{cat:"💊 Santé & pharmacie",items:[
+ {id:"pk8",t:"Antipaludéen (Malarone / doxy) pour Mondulkiri"},
+ {id:"pk9",t:"Trousse turista : antibio, anti-diarrhéique, réhydratation"},
+ {id:"pk10",t:"Antidouleur / fièvre (paracétamol)"},
+ {id:"pk11",t:"Pansements, désinfectant, compresses"},
+ {id:"pk12",t:"Anti-moustiques tropical (DEET)"},
+ {id:"pk13",t:"Crème solaire haute protection + après-soleil"},
+ {id:"pk14",t:"Médicaments perso + ordonnance en anglais"},
+ {id:"pk15",t:"Gel hydroalcoolique, protections hygiéniques / cup"}]},
+{cat:"🔌 Électronique",items:[
+ {id:"pk16",t:"Téléphones + chargeurs"},
+ {id:"pk17",t:"Batterie externe (power bank)"},
+ {id:"pk18",t:"Adaptateur universel",s:"⚠️ Japon = 100 V"},
+ {id:"pk19",t:"Appareil photo / GoPro + cartes SD"},
+ {id:"pk20",t:"Écouteurs + mini trépied"},
+ {id:"pk21",t:"VPN installé + eSIM prêtes",s:"VPN indispensable pour la Chine"}]},
+{cat:"👕 Vêtements (climats variés)",items:[
+ {id:"pk22",t:"T-shirts, short, pantalon léger"},
+ {id:"pk23",t:"Pull / polaire + veste imperméable",s:"Montagnes (Sapa, Shangri-La) & Japon en automne"},
+ {id:"pk24",t:"Sous-vêtements & chaussettes"},
+ {id:"pk25",t:"Maillots de bain"},
+ {id:"pk26",t:"Tenue « temples » (épaules & genoux couverts)"},
+ {id:"pk27",t:"Casquette / chapeau, lunettes de soleil, paréo"}]},
+{cat:"👟 Chaussures",items:[
+ {id:"pk28",t:"Baskets de marche / rando"},
+ {id:"pk29",t:"Tongs / sandales"},
+ {id:"pk30",t:"Chaussures d'eau (récifs, cascades)"}]},
+{cat:"🧴 Trousse de toilette",items:[
+ {id:"pk31",t:"Brosse à dents, dentifrice, savon/shampoing solide"},
+ {id:"pk32",t:"Serviette microfibre"},
+ {id:"pk33",t:"Rasoir, coupe-ongles, nécessaire perso"}]},
+{cat:"🎒 Équipement & divers",items:[
+ {id:"pk34",t:"Grand sac à dos + petit sac de jour"},
+ {id:"pk35",t:"Cadenas + housse de pluie pour sac"},
+ {id:"pk36",t:"Gourde filtrante",s:"Eau du robinet non potable presque partout"},
+ {id:"pk37",t:"Lampe frontale",s:"Grottes (Chiang Dao, Phong Nha)"},
+ {id:"pk38",t:"Drap-sac + masque de nuit / boules Quies"},
+ {id:"pk39",t:"Sacs étanches / de rangement"}]}
+];
 function renderRem(){
   const t=today();
   let html=`<div class="seg"><button class="${remTab==='ech'?'on':''}" onclick="setRemTab('ech')">🔔 Échéances</button>
-    <button class="${remTab==='prep'?'on':''}" onclick="setRemTab('prep')">🧳 Préparatifs</button></div>`;
+    <button class="${remTab==='prep'?'on':''}" onclick="setRemTab('prep')">🧳 Préparatifs</button>
+    <button class="${remTab==='pack'?'on':''}" onclick="setRemTab('pack')">🎒 Bagage</button></div>`;
   if(remTab==='ech'){
     html+=`<div class="info">🔔 Les rappels marqués <b>notification programmée</b> t'arrivent en <b>notification push</b> sur ton téléphone, même carnet fermé, et se relancent chaque semaine jusqu'à ce que tu répondes « c'est fait ». Ceux-ci s'affichent aussi ici pour t'en souvenir.</div>`;
     const rems=[...REMINDERS].sort((a,b)=>pd(a.date)-pd(b.date));
@@ -1397,12 +1447,22 @@ function renderRem(){
         <div class="dt">${pd(f.date).toLocaleDateString('fr-FR',{weekday:'short',day:'numeric',month:'short',year:'numeric'})}${f.time?' · '+f.time:''}${f.conf?' · '+f.conf:''}</div>
         <span class="ci ${cls}">${st}</span></div><button class="del" onclick="delFlight(${f.id})">✕</button></div>`;});
     html+=`<button class="btn ghost" style="margin-top:6px" onclick="openFlight()">＋ Ajouter un vol</button>`;
-  } else {
+  } else if(remTab==='prep'){
     const all=CHECK.reduce((a,g)=>a+g.items.length,0),done=CHECK.reduce((a,g)=>a+g.items.filter(i=>S.check[i.id]).length,0);
     html+=`<div class="lhero"><span class="badge">Préparation</span><div class="big">${done}<small> / ${all} démarches</small></div>
       <div class="pbar"><i style="width:${Math.round(done/all*100)}%"></i></div>
       <div class="pmeta"><span>${Math.round(done/all*100)}% prêt</span><span>${all-done} restantes</span></div></div>`;
     CHECK.forEach(g=>{html+=`<div class="ck-when">▹ ${g.when}</div>`;
+      g.items.forEach(i=>{const d=S.check[i.id];
+        html+=`<div class="ck-item ${d?'done':''}" onclick="toggleCheck('${i.id}')"><div class="cb big ${d?'on':''}"></div>
+          <div class="ci"><div class="t">${i.t}</div>${i.s?`<div class="s">${i.s}</div>`:''}</div></div>`;});});
+  } else {
+    const pall=PACK.reduce((a,g)=>a+g.items.length,0),pdone=PACK.reduce((a,g)=>a+g.items.filter(i=>S.check[i.id]).length,0);
+    html+=`<div class="lhero"><span class="badge">Bagage</span><div class="big">${pdone}<small> / ${pall} affaires</small></div>
+      <div class="pbar"><i style="width:${pall?Math.round(pdone/pall*100):0}%"></i></div>
+      <div class="pmeta"><span>${pall?Math.round(pdone/pall*100):0}% dans le sac</span><span>${pall-pdone} restantes</span></div></div>`;
+    html+=`<div class="info">🎒 Coche au fur et à mesure que tu prépares ton sac. Climats variés (plages tropicales + montagnes fraîches + Japon en automne) → pense aux couches et à l'imperméable.</div>`;
+    PACK.forEach(g=>{html+=`<div class="ck-when">▹ ${g.cat}</div>`;
       g.items.forEach(i=>{const d=S.check[i.id];
         html+=`<div class="ck-item ${d?'done':''}" onclick="toggleCheck('${i.id}')"><div class="cb big ${d?'on':''}"></div>
           <div class="ci"><div class="t">${i.t}</div>${i.s?`<div class="s">${i.s}</div>`:''}</div></div>`;});});
