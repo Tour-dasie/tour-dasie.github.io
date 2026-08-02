@@ -1372,51 +1372,71 @@ function delSettle(id){S.settlements=(S.settlements||[]).filter(x=>x.id!==id);sa
 let remTab='ech';
 const PACK=[
 {cat:"📄 Papiers & argent",items:[
- {id:"pk1",t:"Passeports (valides 6 mois après le retour)"},
- {id:"pk2",t:"Photocopies + scans cloud (passeport, visas, assurance)"},
- {id:"pk3",t:"Cartes bancaires Revolut + Wise"},
+ {id:"pk1",t:"Passeports ×2 (valides 6 mois après le retour)"},
+ {id:"pk2",t:"Photocopies + scans cloud (passeports, visas, assurance)"},
+ {id:"pk3",t:"Cartes bancaires Revolut + Wise (chacun)"},
  {id:"pk4",t:"Cash en dollars US",s:"Utile Cambodge / Laos"},
- {id:"pk5",t:"Attestation d'assurance Chapka + n° d'urgence"},
- {id:"pk6",t:"Photos d'identité (×4)",s:"Cartes SIM / démarches sur place"},
- {id:"pk7",t:"Carnet de vaccination international"}]},
-{cat:"💊 Santé & pharmacie",items:[
- {id:"pk8",t:"Antipaludéen (Malarone / doxy) pour Mondulkiri"},
- {id:"pk9",t:"Trousse turista : antibio, anti-diarrhéique, réhydratation"},
- {id:"pk10",t:"Antidouleur / fièvre (paracétamol)"},
- {id:"pk11",t:"Pansements, désinfectant, compresses"},
- {id:"pk12",t:"Anti-moustiques tropical (DEET)"},
- {id:"pk13",t:"Crème solaire haute protection + après-soleil"},
- {id:"pk14",t:"Médicaments perso + ordonnance en anglais"},
- {id:"pk15",t:"Gel hydroalcoolique, protections hygiéniques / cup"}]},
+ {id:"pk5",t:"Attestations d'assurance Chapka ×2 + n° d'urgence"},
+ {id:"pk6",t:"Photos d'identité ×4 chacun",s:"Cartes SIM / démarches sur place"},
+ {id:"pk7",t:"Carnets de vaccination internationaux ×2"}]},
+{cat:"💊 Trousse de secours",items:[
+ {id:"pk8",t:"Antipaludéen (Malarone / doxy)",s:"Pour Mondulkiri (chacun)"},
+ {id:"pk9",t:"Antibiotique turista (azithromycine) + ordonnance anglaise"},
+ {id:"pk10",t:"Anti-diarrhéique (lopéramide) + sachets de réhydratation"},
+ {id:"pk11",t:"Antidouleur / fièvre (paracétamol) + anti-inflammatoire (ibuprofène)"},
+ {id:"pk12",t:"Antispasmodique (Spasfon)",s:"Maux de ventre / règles"},
+ {id:"pk13",t:"Antihistaminique (allergies, piqûres)"},
+ {id:"pk14",t:"Anti-nausée / mal des transports",s:"Bus de montagne, bateaux"},
+ {id:"pk15",t:"Antifongique en crème",s:"Mycoses fréquentes en climat humide"},
+ {id:"pk16",t:"Antiseptique cutané (chlorhexidine) + compresses stériles"},
+ {id:"pk17",t:"Pansements assortis + pansements ampoules (Compeed) + steri-strips"},
+ {id:"pk18",t:"Bande élastique (entorse) + ciseaux + pince à épiler"},
+ {id:"pk19",t:"Crème brûlure/soleil (Biafine) + crème cortisone (piqûres)"},
+ {id:"pk20",t:"Collyre + sérum physiologique"},
+ {id:"pk21",t:"Thermomètre + gel hydroalcoolique"},
+ {id:"pk22",t:"Répulsif moustiques (DEET) + soin après-piqûre"},
+ {id:"pk23",t:"Pastilles de purification d'eau (secours)"},
+ {id:"pk24",t:"Médicaments perso de chacun (stock + ordonnances)"}]},
+{cat:"👩 Spécifique Marie",items:[
+ {id:"pk25",t:"Protections hygiéniques / cup menstruelle"},
+ {id:"pk26",t:"Contraception (stock 7-8 mois) + ordonnance"},
+ {id:"pk27",t:"Traitement mycose (ovules)",s:"Fréquent en climat chaud & humide"},
+ {id:"pk28",t:"Soutiens-gorge, attaches cheveux, démaquillant"},
+ {id:"pk29",t:"Rasoir / nécessaire d'épilation"}]},
+{cat:"👨 Spécifique Baptiste",items:[
+ {id:"pk30",t:"Rasoir + mousse à raser (ou tondeuse)"},
+ {id:"pk31",t:"Soins perso (après-rasage, etc.)"}]},
 {cat:"🔌 Électronique",items:[
- {id:"pk16",t:"Téléphones + chargeurs"},
- {id:"pk17",t:"Batterie externe (power bank)"},
- {id:"pk18",t:"Adaptateur universel",s:"⚠️ Japon = 100 V"},
- {id:"pk19",t:"Appareil photo / GoPro + cartes SD"},
- {id:"pk20",t:"Écouteurs + mini trépied"},
- {id:"pk21",t:"VPN installé + eSIM prêtes",s:"VPN indispensable pour la Chine"}]},
+ {id:"pk32",t:"Téléphones ×2 + chargeurs"},
+ {id:"pk33",t:"Batterie externe (power bank)"},
+ {id:"pk34",t:"Adaptateur universel ×2",s:"⚠️ Japon = 100 V"},
+ {id:"pk35",t:"Appareil photo / GoPro + cartes SD"},
+ {id:"pk36",t:"Écouteurs + mini trépied"},
+ {id:"pk37",t:"VPN installé + eSIM prêtes",s:"VPN indispensable pour la Chine"}]},
 {cat:"👕 Vêtements (climats variés)",items:[
- {id:"pk22",t:"T-shirts, short, pantalon léger"},
- {id:"pk23",t:"Pull / polaire + veste imperméable",s:"Montagnes (Sapa, Shangri-La) & Japon en automne"},
- {id:"pk24",t:"Sous-vêtements & chaussettes"},
- {id:"pk25",t:"Maillots de bain"},
- {id:"pk26",t:"Tenue « temples » (épaules & genoux couverts)"},
- {id:"pk27",t:"Casquette / chapeau, lunettes de soleil, paréo"}]},
+ {id:"pk38",t:"T-shirts, short, pantalon léger (chacun)"},
+ {id:"pk39",t:"Pull / polaire + veste imperméable",s:"Montagnes (Sapa, Shangri-La) & Japon en automne"},
+ {id:"pk40",t:"Sous-vêtements & chaussettes"},
+ {id:"pk41",t:"Maillots de bain"},
+ {id:"pk42",t:"Tenue « temples » chacun (épaules & genoux couverts)"},
+ {id:"pk43",t:"Casquette / chapeau, lunettes de soleil, paréo"}]},
 {cat:"👟 Chaussures",items:[
- {id:"pk28",t:"Baskets de marche / rando"},
- {id:"pk29",t:"Tongs / sandales"},
- {id:"pk30",t:"Chaussures d'eau (récifs, cascades)"}]},
+ {id:"pk44",t:"Baskets de marche / rando (chacun)"},
+ {id:"pk45",t:"Tongs / sandales"},
+ {id:"pk46",t:"Chaussures d'eau (récifs, cascades)"}]},
 {cat:"🧴 Trousse de toilette",items:[
- {id:"pk31",t:"Brosse à dents, dentifrice, savon/shampoing solide"},
- {id:"pk32",t:"Serviette microfibre"},
- {id:"pk33",t:"Rasoir, coupe-ongles, nécessaire perso"}]},
+ {id:"pk47",t:"Brosses à dents ×2, dentifrice, savon/shampoing solide"},
+ {id:"pk48",t:"Serviettes microfibre ×2"},
+ {id:"pk49",t:"Crème solaire haute protection + stick lèvres SPF + après-soleil"},
+ {id:"pk50",t:"Coupe-ongles, nécessaire perso"}]},
 {cat:"🎒 Équipement & divers",items:[
- {id:"pk34",t:"Grand sac à dos + petit sac de jour"},
- {id:"pk35",t:"Cadenas + housse de pluie pour sac"},
- {id:"pk36",t:"Gourde filtrante",s:"Eau du robinet non potable presque partout"},
- {id:"pk37",t:"Lampe frontale",s:"Grottes (Chiang Dao, Phong Nha)"},
- {id:"pk38",t:"Drap-sac + masque de nuit / boules Quies"},
- {id:"pk39",t:"Sacs étanches / de rangement"}]}
+ {id:"pk51",t:"Grands sacs à dos ×2 + petits sacs de jour"},
+ {id:"pk52",t:"Cadenas + housses de pluie"},
+ {id:"pk53",t:"Gourde filtrante",s:"Eau du robinet non potable presque partout"},
+ {id:"pk54",t:"Lampe frontale",s:"Grottes (Chiang Dao, Phong Nha)"},
+ {id:"pk55",t:"Draps-sac ×2 + masque de nuit / boules Quies"},
+ {id:"pk56",t:"Préservatifs"},
+ {id:"pk57",t:"Sacs étanches / de rangement"}]}
 ];
 function renderRem(){
   const t=today();
@@ -1461,7 +1481,7 @@ function renderRem(){
     html+=`<div class="lhero"><span class="badge">Bagage</span><div class="big">${pdone}<small> / ${pall} affaires</small></div>
       <div class="pbar"><i style="width:${pall?Math.round(pdone/pall*100):0}%"></i></div>
       <div class="pmeta"><span>${pall?Math.round(pdone/pall*100):0}% dans le sac</span><span>${pall-pdone} restantes</span></div></div>`;
-    html+=`<div class="info">🎒 Coche au fur et à mesure que tu prépares ton sac. Climats variés (plages tropicales + montagnes fraîches + Japon en automne) → pense aux couches et à l'imperméable.</div>`;
+    html+=`<div class="info">🎒 Liste pour 2 (👩 Marie + 👨 Baptiste) — coche au fur et à mesure. Climats variés (plages tropicales + montagnes fraîches + Japon en automne) → pense aux couches et à l'imperméable.</div>`;
     PACK.forEach(g=>{html+=`<div class="ck-when">▹ ${g.cat}</div>`;
       g.items.forEach(i=>{const d=S.check[i.id];
         html+=`<div class="ck-item ${d?'done':''}" onclick="toggleCheck('${i.id}')"><div class="cb big ${d?'on':''}"></div>
