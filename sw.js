@@ -1,11 +1,11 @@
 /* Service worker — Tour d'Asie
    1) Notifications push (appli fermée)
    2) Mode hors-ligne : met en cache l'appli + ses ressources pour consulter sans réseau */
-const CACHE = 'tourdasie-v13';
+const CACHE = 'tourdasie-v14';
 
 /* Ressources internes (même domaine) */
 const CORE = [
-  './', 'index.html', 'manifest.json',
+  './', 'index.html', 'manifest.json', 'vols.html',
   'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'
 ];
 /* Librairies externes (carte + Firebase) — mises en cache pour marcher hors-ligne */
