@@ -67,6 +67,11 @@ h1{font-size:clamp(27px,5vw,38px);margin:8px 0 10px;line-height:1.08}
   padding:10px 15px;border-radius:11px;white-space:nowrap;transition:transform .12s ease,filter .12s ease}
 .btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
 .btn:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.btn.nomar{margin-left:0}
+.btn2{background:transparent;border:1.6px solid var(--acc);color:var(--acc);text-decoration:none;font-weight:700;font-size:13px;padding:8px 13px;border-radius:11px;white-space:nowrap;transition:background .12s ease}
+.btn2:hover{background:var(--acc-soft)}
+.btn2:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.search{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .busnote{margin-left:auto;font-size:12.5px;color:var(--sage);font-weight:700}
 .leg.done .idx{background:var(--sage-soft);color:var(--sage)}
 .chip.done{background:var(--sage-soft);color:var(--sage)}
@@ -90,7 +95,7 @@ a.plain{color:var(--acc);font-weight:600}
 </head><body><div class="wrap">
   <div class="eyebrow">Plan de vols · Tour d'Asie</div>
   <h1>Vos vols, du moins cher au plus malin</h1>
-  <p class="lede">7 pays, 14 oct 2026 → 31 mai 2027, à deux. Sur tout l'itinéraire, <b>7 vols</b> valent le coup — l'aller Madrid→Pékin est déjà réservé ✅, il en reste <b>4 sûrs</b> + 2 « à confirmer » selon si vous allez aux Philippines (encore à décider). Les autres liaisons se font en bus. Chaque trajet a un bouton qui ouvre la recherche <b>Kayak</b> pré-remplie avec vos dates.</p>
+  <p class="lede">7 pays, 14 oct 2026 → 31 mai 2027, à deux. Sur tout l'itinéraire, <b>7 vols</b> valent le coup — l'aller Madrid→Pékin est déjà réservé ✅, il en reste <b>4 sûrs</b> + 2 « à confirmer » selon si vous allez aux Philippines (encore à décider). Les autres liaisons se font en bus. Chaque trajet a <b>deux boutons — Skyscanner et Google Flights —</b> pré-remplis avec vos dates.</p>
 
   <div class="summary">
     <div class="kpi"><div class="l">Vols à réserver</div><div class="v">4–6 <small style="font-size:12px;font-weight:600;color:var(--muted)">aller ✅ · selon 🇵🇭</small></div></div>
@@ -122,7 +127,7 @@ a.plain{color:var(--acc);font-weight:600}
       <div class="leg-foot">
         <div class="est"><span class="l">Estimation</span><span class="v">120–250 €<small> /pers</small></span></div>
         <span class="book">🗓️ Réserver 1-2 mois avant</span>
-        <a class="btn" href="https://www.kayak.fr/flights/KWL-FUK/2026-11-09/2adults?sort=price_a" target="_blank" rel="noopener">Voir les prix →</a>
+        <span class="search"><a class="btn nomar" href="https://www.skyscanner.net/transport/flights/kwl/fuk/261109/?adults=2" target="_blank" rel="noopener">🔎 Skyscanner</a><a class="btn2" href="https://www.google.com/travel/flights?q=Flights%20from%20Guilin%20to%20Fukuoka%20on%202026-11-09" target="_blank" rel="noopener">Google Flights</a></span>
       </div>
     </article>
 
@@ -135,7 +140,7 @@ a.plain{color:var(--acc);font-weight:600}
       <div class="leg-foot">
         <div class="est"><span class="l">Estimation</span><span class="v">150–300 €<small> /pers</small></span></div>
         <span class="book">🗓️ Réserver 2-3 mois avant</span>
-        <a class="btn" href="https://www.kayak.fr/flights/TYO-CNX/2026-12-14/2adults?sort=price_a" target="_blank" rel="noopener">Voir les prix →</a>
+        <span class="search"><a class="btn nomar" href="https://www.skyscanner.net/transport/flights/tyoa/cnx/261214/?adults=2" target="_blank" rel="noopener">🔎 Skyscanner</a><a class="btn2" href="https://www.google.com/travel/flights?q=Flights%20from%20Tokyo%20to%20Chiang%20Mai%20on%202026-12-14" target="_blank" rel="noopener">Google Flights</a></span>
       </div>
     </article>
 
@@ -148,7 +153,7 @@ a.plain{color:var(--acc);font-weight:600}
       <div class="leg-foot">
         <div class="est"><span class="l">Estimation</span><span class="v">100–200 €<small> /pers</small></span></div>
         <span class="book">🗓️ Réserver 1-2 mois avant</span>
-        <a class="btn" href="https://www.kayak.fr/flights/KBV-PNH/2027-01-27/2adults?sort=price_a" target="_blank" rel="noopener">Voir les prix →</a>
+        <span class="search"><a class="btn nomar" href="https://www.skyscanner.net/transport/flights/kbv/pnh/270127/?adults=2" target="_blank" rel="noopener">🔎 Skyscanner</a><a class="btn2" href="https://www.google.com/travel/flights?q=Flights%20from%20Krabi%20to%20Phnom%20Penh%20on%202027-01-27" target="_blank" rel="noopener">Google Flights</a></span>
       </div>
     </article>
 
@@ -174,7 +179,7 @@ a.plain{color:var(--acc);font-weight:600}
       <div class="leg-foot">
         <div class="est"><span class="l">Estimation</span><span class="v">80–150 €<small> /pers</small></span></div>
         <span class="book">🗓️ Réserver 1-2 mois avant</span>
-        <a class="btn" href="https://www.kayak.fr/flights/HAN-VTE/2027-04-01/2adults?sort=price_a" target="_blank" rel="noopener">Voir les prix →</a>
+        <span class="search"><a class="btn nomar" href="https://www.skyscanner.net/transport/flights/han/vte/270401/?adults=2" target="_blank" rel="noopener">🔎 Skyscanner</a><a class="btn2" href="https://www.google.com/travel/flights?q=Flights%20from%20Hanoi%20to%20Vientiane%20on%202027-04-01" target="_blank" rel="noopener">Google Flights</a></span>
       </div>
     </article>
 
@@ -188,7 +193,7 @@ a.plain{color:var(--acc);font-weight:600}
       <div class="leg-foot">
         <div class="est"><span class="l">Estimation (total)</span><span class="v">250–450 €<small> /pers</small></span></div>
         <span class="book">🗓️ Manille→Coron : réserver tôt</span>
-        <a class="btn" href="https://www.kayak.fr/flights/LPQ-MNL/2027-04-29/2adults?sort=price_a" target="_blank" rel="noopener">Voir les prix →</a>
+        <span class="search"><a class="btn nomar" href="https://www.skyscanner.net/transport/flights/lpq/mnl/270429/?adults=2" target="_blank" rel="noopener">🔎 Skyscanner</a><a class="btn2" href="https://www.google.com/travel/flights?q=Flights%20from%20Luang%20Prabang%20to%20Manila%20on%202027-04-29" target="_blank" rel="noopener">Google Flights</a></span>
       </div>
     </article>
 
@@ -200,9 +205,9 @@ a.plain{color:var(--acc);font-weight:600}
       <p class="leg-note"><b>Deux scénarios, selon les Philippines :</b></p>
       <p class="leg-note">🅰️ <b>Avec les Philippines →</b> retour depuis <b>Manille</b> (Coron → Manille, puis Manille → Madrid via Doha / Istanbul / Dubaï). ~450-650 €/pers.</p>
       <p class="leg-note">🅱️ <b>Sans les Philippines →</b> le voyage se termine côté Thaïlande : retour depuis <b>Bangkok</b>, souvent moins cher. ~400-600 €/pers.</p>
-      <div class="leg-foot">
-        <a class="btn" href="https://www.kayak.fr/flights/MNL-MAD/2027-05-31/2adults?sort=price_a" target="_blank" rel="noopener">🅰️ Manille → Madrid</a>
-        <a class="btn" href="https://www.kayak.fr/flights/BKK-MAD/2027-05-31/2adults?sort=price_a" target="_blank" rel="noopener" style="background:var(--sage)">🅱️ Bangkok → Madrid</a>
+      <div class="leg-foot" style="flex-direction:column;align-items:stretch;gap:9px">
+        <span class="search" style="margin-left:0"><a class="btn nomar" href="https://www.skyscanner.net/transport/flights/mnl/mad/270531/?adults=2" target="_blank" rel="noopener">🅰️ Skyscanner · Manille→Madrid</a><a class="btn2" href="https://www.google.com/travel/flights?q=Flights%20from%20Manila%20to%20Madrid%20on%202027-05-31" target="_blank" rel="noopener">Google Flights</a></span>
+        <span class="search" style="margin-left:0"><a class="btn nomar" href="https://www.skyscanner.net/transport/flights/bkk/mad/270531/?adults=2" target="_blank" rel="noopener" style="background:var(--sage)">🅱️ Skyscanner · Bangkok→Madrid</a><a class="btn2" href="https://www.google.com/travel/flights?q=Flights%20from%20Bangkok%20to%20Madrid%20on%202027-05-31" target="_blank" rel="noopener">Google Flights</a></span>
       </div>
     </article>
 
