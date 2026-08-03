@@ -71,6 +71,8 @@ h1{font-size:clamp(27px,5vw,38px);margin:8px 0 10px;line-height:1.08}
 .leg.done .idx{background:var(--sage-soft);color:var(--sage)}
 .chip.done{background:var(--sage-soft);color:var(--sage)}
 .done-pill{margin-left:auto;font-size:13px;color:var(--sage);font-weight:800}
+.chip.todo{background:var(--acc-soft);color:var(--gold)}
+.leg.todo{border-style:dashed}
 .flag{display:inline-block}
 .tips{margin-top:30px;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}
 .tips h2{font-size:20px;margin-bottom:6px}
@@ -88,11 +90,11 @@ a.plain{color:var(--acc);font-weight:600}
 </head><body><div class="wrap">
   <div class="eyebrow">Plan de vols · Tour d'Asie</div>
   <h1>Vos vols, du moins cher au plus malin</h1>
-  <p class="lede">7 pays, 14 oct 2026 → 31 mai 2027, à deux. Sur tout l'itinéraire, <b>7 vols</b> valent le coup — l'aller Madrid→Pékin est déjà réservé ✅, il en reste <b>6</b>. Les autres liaisons se font en bus. Chaque trajet a un bouton qui ouvre la recherche <b>Kayak</b> pré-remplie avec vos dates.</p>
+  <p class="lede">7 pays, 14 oct 2026 → 31 mai 2027, à deux. Sur tout l'itinéraire, <b>7 vols</b> valent le coup — l'aller Madrid→Pékin est déjà réservé ✅, il en reste <b>4 sûrs</b> + 2 « à confirmer » selon si vous allez aux Philippines (encore à décider). Les autres liaisons se font en bus. Chaque trajet a un bouton qui ouvre la recherche <b>Kayak</b> pré-remplie avec vos dates.</p>
 
   <div class="summary">
-    <div class="kpi"><div class="l">Vols à réserver</div><div class="v">6 <small style="font-size:12px;font-weight:600;color:var(--muted)">/ 7 · aller ✅</small></div></div>
-    <div class="kpi"><div class="l">Budget vols restant</div><div class="v">≈ 2 300–4 000 €</div></div>
+    <div class="kpi"><div class="l">Vols à réserver</div><div class="v">4–6 <small style="font-size:12px;font-weight:600;color:var(--muted)">aller ✅ · selon 🇵🇭</small></div></div>
+    <div class="kpi"><div class="l">Budget vols restant</div><div class="v">≈ 1 900–4 000 €</div></div>
     <div class="kpi"><div class="l">Pour</div><div class="v">2 voyageurs</div></div>
   </div>
   <div class="legend"><span>✈️ <b>Vol</b> — à réserver</span><span>🚌 <b>Bus</b> — pas de vol, on économise</span><span>💶 prix = estimation indicative /personne</span></div>
@@ -176,11 +178,12 @@ a.plain{color:var(--acc);font-weight:600}
       </div>
     </article>
 
-    <article class="leg">
+    <article class="leg todo">
       <div class="leg-h"><span class="idx">6</span>
         <div class="route"><div class="pins">🇱🇦 Luang Prabang → 🇵🇭 Coron</div><h3>Laos → Philippines</h3></div>
-        <span class="chip flight">✈️ 2 vols</span></div>
+        <span class="chip todo">❓ À confirmer</span></div>
       <div class="leg-meta">📅 ~30 avr 2027 · via Manille · le trajet le plus complexe</div>
+      <p class="leg-note" style="color:var(--gold);font-weight:600">❓ Uniquement si vous décidez d'aller aux Philippines.</p>
       <p class="leg-note"><b>Route la moins chère :</b> Luang Prabang → Bangkok → Manille (AirAsia / Cebu Pacific), puis <b>Manille → Coron (aéroport USU/Busuanga)</b> avec Cebu Pacific ou AirAsia (~35-75 €, petits avions). Réserve le vol Manille→Coron <b>tôt</b> : peu de places.</p>
       <div class="leg-foot">
         <div class="est"><span class="l">Estimation (total)</span><span class="v">250–450 €<small> /pers</small></span></div>
@@ -189,25 +192,28 @@ a.plain{color:var(--acc);font-weight:600}
       </div>
     </article>
 
-    <article class="leg">
+    <article class="leg todo">
       <div class="leg-h"><span class="idx">7</span>
-        <div class="route"><div class="pins">🇵🇭 Manille → 🇪🇸 Madrid</div><h3>Le retour</h3></div>
-        <span class="chip flight">✈️ Vol retour</span></div>
-      <div class="leg-meta">📅 ~31 mai 2027 · 1 escale (pas de direct)</div>
-      <p class="leg-note"><b>Le moins cher :</b> Coron → Manille (Cebu Pacific), puis Manille → Madrid via un hub : Qatar (Doha), Turkish (Istanbul), Emirates (Dubaï) ou Etihad (Abu Dhabi). Compare la valise soute incluse.</p>
+        <div class="route"><div class="pins">🏁 Retour vers 🇪🇸 Madrid</div><h3>Le retour — selon votre décision</h3></div>
+        <span class="chip todo">❓ À caler</span></div>
+      <div class="leg-meta">📅 ~fin mai 2027 · 1 escale (pas de vol direct)</div>
+      <p class="leg-note"><b>Deux scénarios, selon les Philippines :</b></p>
+      <p class="leg-note">🅰️ <b>Avec les Philippines →</b> retour depuis <b>Manille</b> (Coron → Manille, puis Manille → Madrid via Doha / Istanbul / Dubaï). ~450-650 €/pers.</p>
+      <p class="leg-note">🅱️ <b>Sans les Philippines →</b> le voyage se termine côté Thaïlande : retour depuis <b>Bangkok</b>, souvent moins cher. ~400-600 €/pers.</p>
       <div class="leg-foot">
-        <div class="est"><span class="l">Estimation</span><span class="v">450–650 €<small> /pers</small></span></div>
-        <span class="book">🗓️ Réserver 2-4 mois avant</span>
-        <a class="btn" href="https://www.kayak.fr/flights/MNL-MAD/2027-05-31/2adults?sort=price_a" target="_blank" rel="noopener">Voir les prix →</a>
+        <a class="btn" href="https://www.kayak.fr/flights/MNL-MAD/2027-05-31/2adults?sort=price_a" target="_blank" rel="noopener">🅰️ Manille → Madrid</a>
+        <a class="btn" href="https://www.kayak.fr/flights/BKK-MAD/2027-05-31/2adults?sort=price_a" target="_blank" rel="noopener" style="background:var(--sage)">🅱️ Bangkok → Madrid</a>
       </div>
     </article>
 
   </div>
 
   <div class="flag-note">
-    <b>⚠️ Deux points à trancher :</b><br>
-    • <b>Retour depuis Manille, pas Bangkok.</b> Votre voyage se termine aux Philippines — le rappel « vol retour » de l'appli mentionnait Bangkok. Dis-moi et je le corrige.<br>
-    • <b>Laos → Philippines :</b> soit tu voles depuis <b>Luang Prabang</b> (avant le bateau lent de Huay Xai), soit tu traverses en Thaïlande (Chiang Rai) pour voler depuis Bangkok. À décider selon les prix.
+    <b>❓ Les Philippines ne sont pas encore décidées — et c'est ok :</b><br>
+    • Les <b>vols 1 à 5 sont sûrs</b> quoi qu'il arrive. Seuls les vols <b>6 et 7</b> dépendent de ce choix, donc rien ne presse.<br>
+    • <b>Si vous y allez :</b> vol Laos → Manille → Coron, puis retour depuis Manille (🅰️).<br>
+    • <b>Si vous zappez :</b> vous gardez ~1 mois libre en mai (plages de Thaïlande, Indonésie…?) et rentrez depuis Bangkok (🅱️), souvent moins cher.<br>
+    • Dis-moi quand c'est tranché, je fige le plan.
   </div>
 
   <div class="tips">
